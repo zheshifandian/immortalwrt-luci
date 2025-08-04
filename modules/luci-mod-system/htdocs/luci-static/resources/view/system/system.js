@@ -228,11 +228,10 @@ return view.extend({
 		o.ucioption = 'lang';
 		o.value('auto');
 
-		var l = Object.assign({ en: 'English' }, uci.get('luci', 'languages')),
-		    k = Object.keys(l).sort();
+		var k = Object.keys(uci.get('luci', 'languages') || {}).sort();
 		for (var i = 0; i < k.length; i++)
 			if (k[i].charAt(0) != '.')
-				o.value(k[i], l[k[i]]);
+				o.value(k[i], uci.get('luci', 'languages', k[i]));
 
 		o = s.taboption('language', form.ListValue, '_mediaurlbase', _('Design'))
 		o.uciconfig = 'luci';
