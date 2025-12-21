@@ -7,12 +7,26 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-base
+PKG_BUILD_FLAGS:=no-lto
 
 LUCI_TYPE:=mod
 LUCI_BASENAME:=base
 
 LUCI_TITLE:=LuCI core libraries
-LUCI_DEPENDS:=+lua +luci-lib-nixio +luci-lib-ip +rpcd +libubus-lua +luci-lib-jsonc +liblucihttp-lua +luci-lib-base +rpcd-mod-file +rpcd-mod-luci +cgi-io
+LUCI_DEPENDS:=\
+	+liblucihttp-ucode \
+	+libubus-lua \
+	+rpcd \
+	+rpcd-mod-file \
+	+rpcd-mod-luci \
+	+rpcd-mod-ucode \
+	+cgi-io \
+	+ucode \
+	+ucode-mod-fs \
+	+ucode-mod-uci \
+	+ucode-mod-ubus \
+	+ucode-mod-math \
+	+ucode-mod-html
 
 PKG_LICENSE:=MIT
 

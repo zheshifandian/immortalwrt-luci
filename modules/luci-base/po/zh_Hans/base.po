@@ -4073,6 +4073,7 @@ msgstr "隧道将要被添加（桥接）到的逻辑网络（可选）。"
 #: modules/luci-base/luasrc/view/sysauth.htm:38
 #: themes/luci-theme-bootstrap/luasrc/view/themes/bootstrap/sysauth.htm:41
 msgid "Login"
+msgid "Log in"
 msgstr "登录"
 
 #: modules/luci-base/root/usr/share/luci/menu.d/luci-base.json:81
