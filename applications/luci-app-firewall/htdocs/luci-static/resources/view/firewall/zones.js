@@ -75,30 +75,30 @@ return view.extend({
 
 		/* Netfilter flow offload support */
 
-		if (L.hasSystemFeature('offloading')) {
-			s = m.section(form.TypedSection, 'defaults', _('Routing/NAT Offloading'),
-				_('Not fully compatible with QoS/SQM.'));
+		// if (L.hasSystemFeature('offloading')) {
+		// 	s = m.section(form.TypedSection, 'defaults', _('Routing/NAT Offloading'),
+		// 		_('Not fully compatible with QoS/SQM.'));
 
-			s.anonymous = true;
-			s.addremove = false;
+		// 	s.anonymous = true;
+		// 	s.addremove = false;
 
-			o = s.option(form.RichListValue, "offloading_type", _("Flow offloading type"));
-			o.value('0', _("None"));
-			o.value('1', _("Software flow offloading"), _('Software based offloading for routing/NAT.'));
-			o.value('2', _("Hardware flow offloading"), _('Hardware based offloading for routing with/without NAT.') + ' ' + _(' Requires hardware NAT support.'));
-			o.optional = false;
-			o.load = function (section_id) {
-				const flow_offloading = uci.get('firewall', section_id, 'flow_offloading');
-				const flow_offloading_hw = uci.get('firewall', section_id, 'flow_offloading_hw');
-				return (flow_offloading === '1')
-					? (flow_offloading_hw === '1' ? '2' : '1')
-					: '0';
-			};
-			o.write = function(section_id, value) {
-				uci.set('firewall', section_id, 'flow_offloading', value === '0' ? null : '1');
-				uci.set('firewall', section_id, 'flow_offloading_hw', value === '2' ? '1' : null);
-			};
-		}
+		// 	o = s.option(form.RichListValue, "offloading_type", _("Flow offloading type"));
+		// 	o.value('0', _("None"));
+		// 	o.value('1', _("Software flow offloading"), _('Software based offloading for routing/NAT.'));
+		// 	o.value('2', _("Hardware flow offloading"), _('Hardware based offloading for routing with/without NAT.') + ' ' + _(' Requires hardware NAT support.'));
+		// 	o.optional = false;
+		// 	o.load = function (section_id) {
+		// 		var flow_offloading = uci.get('firewall', section_id, 'flow_offloading');
+		// 		var flow_offloading_hw = uci.get('firewall', section_id, 'flow_offloading_hw');
+		// 		return (flow_offloading === '1')
+		// 			? (flow_offloading_hw === '1' ? '2' : '1')
+		// 			: '0';
+		// 	};
+		// 	o.write = function(section_id, value) {
+		// 		uci.set('firewall', section_id, 'flow_offloading', value === '0' ? null : '1');
+		// 		uci.set('firewall', section_id, 'flow_offloading_hw', value === '2' ? '1' : null);
+		// 	};
+		// }
 
 
 		s = m.section(form.GridSection, 'zone', _('Zones'));
