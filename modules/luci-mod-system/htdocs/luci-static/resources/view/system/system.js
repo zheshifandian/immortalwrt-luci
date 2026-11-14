@@ -228,7 +228,8 @@ return view.extend({
 		o.uciconfig = 'luci';
 		o.ucisection = 'main';
 		o.ucioption = 'lang';
-		o.value('auto', _('auto'));
+		// o.value('en', _('English'));
+		// o.value('auto', _('auto'));
 
 		const l = Object.assign({ en: 'English' }, uci.get('luci', 'languages'));
 		const keys = Object.keys(l).sort();
